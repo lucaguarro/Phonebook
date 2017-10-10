@@ -14,19 +14,19 @@ public class PhoneBook
     
     private Contact getContact(int number)
     {
-    	return contacts.get(number);
+    		return contacts.get(number);
     }
     
     private Contact getContact(String name)
     {
-    	for (Contact contact : contacts.values())
-    	{
-    		if (contact.getName().equals(name))
-    		{
-    			return contact;
-    		}
-    	}
-    	return new Contact();
+	    	for (Contact contact : contacts.values())
+	    	{
+	    		if (contact.getName().equals(name))
+	    		{
+	    			return contact;
+	    		}
+	    	}
+	    	return new Contact();
     }
 
 
@@ -37,7 +37,7 @@ public class PhoneBook
 
     public void displayContact(String name)
     {
-    	System.out.println(getContact(name));
+    		System.out.println(getContact(name));
     }
 
 }
