@@ -6,6 +6,14 @@ public class Contact {
     private int phoneNumber;
     private String email;
     private String notes;
+    
+    public Contact()
+    {
+    	this.name = "";
+    	this.phoneNumber = -1;
+    	this.email = "";
+    	this.notes = "";
+    }
         
     public Contact(String name, int phoneNumber, String email, String notes) 
     {
