@@ -25,8 +25,8 @@ public class PhoneBook
     		{
     			return contact;
     		}
-    		throw new RuntimeException("Contact not found.");
     	}
+    	return new Contact();
     }
 
 
