@@ -30,31 +30,31 @@ public class Contact {
 
     public void setName(String name)
     {
-    this.name = name;
+    		this.name = name;
     }
     
     public int getPhoneNumber()
     {
-    return this.phoneNumber;
+    		return this.phoneNumber;
     }
     
     public void setPhoneNumber(int phoneNumber)
     {
-    this.phoneNumber = phoneNumber;
+    		this.phoneNumber = phoneNumber;
     }
     
     public String email()
     {
-    return this.email;
+    		return this.email;
     }
-public String getNotes()
+    public String getNotes()
     {
-    return this.notes;
+    		return this.notes;
     }
     
     public void setNotes(String notes)
     {
-    this.notes = notes;
+    		this.notes = notes;
     }
 }
     
