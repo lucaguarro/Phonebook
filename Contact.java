@@ -61,6 +61,7 @@ public class Contact {
     {
     		return this.email;
     }
+    
     public String getNotes()
     {
     		return this.notes;

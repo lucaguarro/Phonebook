@@ -32,7 +32,6 @@ public class PhoneBook
     	return null;
     }
 
-
     public void addContact(Integer number, Contact contact)
     {
         this.contacts.put(number, contact);
@@ -46,6 +45,11 @@ public class PhoneBook
     public void displayContact(int number)
     {
     	System.out.println(getContact(number));
+    }
+    
+    public void addCall(Call call)
+    {
+    	callHistory.add(call);
     }
 
 }
