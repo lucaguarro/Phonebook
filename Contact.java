@@ -22,6 +22,20 @@ public class Contact {
         this.email = email;
         this.notes = notes;
     }
+    
+    public String toString()
+    {
+    	String text = "------------------------\n";
+    	text += "Name: " + name + "\n";
+    	text += "Phone Number: " + phoneNumber + "\n";
+    	text += "Email: " + email + "\n";
+    	if (!notes.equals(""))
+    	{
+    		text += "Notes:\n" + notes + "\n";
+    	}
+    	text += "------------------------\n";
+    	return text;
+    }
 
     public String getName()
     {
