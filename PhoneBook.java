@@ -1,5 +1,6 @@
 
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 public class PhoneBook
 {
@@ -14,19 +15,19 @@ public class PhoneBook
     
     private Contact getContact(int number)
     {
-    		return contacts.get(number);
+    	return contacts.get(number);
     }
     
     private Contact getContact(String name)
     {
-	    	for (Contact contact : contacts.values())
-	    	{
-	    		if (contact.getName().equals(name))
-	    		{
-	    			return contact;
-	    		}
-	    	}
-	    	return new Contact();
+    	for (Contact contact : contacts.values())
+    	{
+    		if (contact.getName().equals(name))
+    		{
+    			return contact;
+    		}
+    	}
+    	throw new NoSuchElementException("No contact with name '" + name + "'.");
     }
 
 
@@ -37,7 +38,7 @@ public class PhoneBook
 
     public void displayContact(String name)
     {
-    		System.out.println(getContact(name));
+    	System.out.println(getContact(name));
     }
 
 }
