@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class Main {
 	static Scanner reader = new Scanner(System.in);
+	static PhoneBook myPhonebook = new PhoneBook();
+	
 	public static void main(String[] args) {
 		showMainMenu();
 		reader.close();
@@ -18,6 +20,11 @@ public class Main {
 			input = reader.next();
 			if(input.equals("options")) {
 				endProgram = showOptions();
+				if(!endProgram) { //Go back was prompted
+					System.out.println("Enter a 10-digit phonenumber, name,"
+							+ " 1-5 to choose a preset favorite"
+							+ " or options to enter the options menu");
+				}
 			}
 			
 		}while(!input.equals("DONE") || endProgram);
@@ -34,10 +41,11 @@ public class Main {
 		do {
 			inputValid = true;
 			if(input.equals("DONE")) {
+				System.out.println("Exiting...");
 				return true;
 			}
 			else if(input.equals("1")) {
-				
+				System.out(myPhonebook.getCallHistory());
 			}
 			else if(input.equals("2")) {
 				
