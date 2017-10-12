@@ -18,11 +18,21 @@ public class PhoneBook
         this.favorites = new int[5];
     }
     
+    /**
+     * Get a contact object by its number
+     * @param number Integer representing a contact's phone number
+     * @return Contact The contact object
+     */
     public Contact getContact(int number)
     {
     	return contacts.get(number);
     }
     
+    /**
+     * Get a contact object by its name
+     * @param name Must be exact name of contact
+     * @return Contact The contact object
+     */
     public Contact getContact(String name)
     {
     	for (Contact contact : contacts.values())
@@ -35,6 +45,11 @@ public class PhoneBook
     	return null;
     }
     
+    /**
+     * Check if a contact is in the phonebook
+     * @param name
+     * @return True if it is, false if it isnt
+     */
     public boolean isContact(String name)
     {
     	return getContact(name) != null;
@@ -50,9 +65,13 @@ public class PhoneBook
     	return getContact(favorites[priority - 1]);
     }
 
-    public void addContact(Integer number, Contact contact)
+    /**
+     * Adds a contact to the phonebook
+     * @param contact - Contact object you wish to add
+     */
+    public void addContact(Contact contact)
     {
-        this.contacts.put(number, contact);
+        this.contacts.put(contact.getPhoneNumber(), contact);
     }
 
     public void displayContact(String name)
@@ -65,6 +84,9 @@ public class PhoneBook
     	System.out.println(getContact(number));
     }
     
+    /**
+     * Sorts the hashMap of contacts and prints them all to console
+     */
     public void displayAllContacts()
     {
     	ArrayList<Contact> mapValues = new ArrayList<>(contacts.values());
@@ -75,7 +97,11 @@ public class PhoneBook
     	}
     }
     
-    
+    /**
+     * Adds a call to callHistory, unless there already was a recent call, then it adds to to that call's info
+     * @param number Phone number in integer form
+     * @param outgoing Boolean
+     */
     public void doCall(int number, boolean outgoing)
     {
     	for (Call call : callHistory)
