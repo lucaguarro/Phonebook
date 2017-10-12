@@ -9,11 +9,13 @@ public class PhoneBook
 
     HashMap<Integer, Contact> contacts;
     ArrayList<Call> callHistory;
+    private int[] favorites;
     
     public PhoneBook()
     {
         this.contacts = new HashMap<Integer, Contact>();
         this.callHistory = new ArrayList<Call>();
+        this.favorites = new int[5];
     }
     
     public Contact getContact(int number)
@@ -31,6 +33,16 @@ public class PhoneBook
     		}
     	}
     	return null;
+    }
+    
+    /**
+     * 
+     * @param priority - Which favorite to return from 1 - 5 (Does not start at 0)
+     * @return Contact - favorite contact at this location
+     */
+    public Contact getFavorite(int priority)
+    {
+    	return getContact(favorites[priority - 1]);
     }
 
     public void addContact(Integer number, Contact contact)
