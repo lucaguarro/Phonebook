@@ -1,11 +1,12 @@
+import java.time.LocalDateTime;
 
 public class CallInfo {
 	private String dateTime;
 	private boolean outgoing;
 	
-	public CallInfo(String dateTime, boolean outgoing)
+	public CallInfo(boolean outgoing)
 	{
-		this.dateTime = dateTime;
+		this.dateTime = LocalDateTime.now().toString();
 		this.outgoing = outgoing;
 	}
 	

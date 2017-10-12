@@ -5,10 +5,10 @@ public class Call
 	private int number;
 	private ArrayList<CallInfo> callInfos;
 	
-	public Call(int number, String dateTime, boolean outgoing)
+	public Call(int number, boolean outgoing)
 	{
 		this.number = number;
-		callInfos.add(new CallInfo(dateTime, outgoing));
+		callInfos.add(new CallInfo(outgoing));
 	}
 	
 	public String callInfoToString()
