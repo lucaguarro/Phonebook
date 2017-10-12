@@ -35,6 +35,11 @@ public class PhoneBook
     	return null;
     }
     
+    public boolean isContact(String name)
+    {
+    	return getContact(name) != null;
+    }
+    
     /**
      * 
      * @param priority - Which favorite to return from 1 - 5 (Does not start at 0)
@@ -70,10 +75,23 @@ public class PhoneBook
     	}
     }
     
-    public void addCall(Call call)
+    
+    public void doCall(int number, boolean outgoing)
     {
-    	callHistory.add(call);
+    	for (Call call : callHistory)
+    	{
+    		if(call.getNumber() == number)
+    		{
+    			//TODO: check if date is within 24 hours
+    			call.addHistory(outgoing);
+    			return;
+    		}
+    	}
+    	//Only executes if there isn't already a logged call
+    	Call newCall = new Call(number, outgoing);
+    	callHistory.add(newCall);
     }
+   
 
 }
 
