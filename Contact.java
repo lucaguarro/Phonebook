@@ -1,6 +1,6 @@
 
 
-public class Contact {
+public class Contact implements Comparable<Contact>{
     
     private String name;
     private int phoneNumber;
@@ -21,6 +21,20 @@ public class Contact {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.notes = notes;
+    }
+    
+    public String toString()
+    {
+    	String text = "------------------------\n";
+    	text += "Name: " + name + "\n";
+    	text += "Phone Number: " + phoneNumber + "\n";
+    	text += "Email: " + email + "\n";
+    	if (!notes.equals(""))
+    	{
+    		text += "Notes:\n" + notes + "\n";
+    	}
+    	text += "------------------------\n";
+    	return text;
     }
 
     public String getName()
@@ -47,6 +61,7 @@ public class Contact {
     {
     		return this.email;
     }
+    
     public String getNotes()
     {
     		return this.notes;
@@ -56,6 +71,12 @@ public class Contact {
     {
     		this.notes = notes;
     }
+
+	@Override
+	public int compareTo(Contact otherContact) 
+	{
+		return this.name.compareTo(otherContact.name);
+	}
 }
     
 
