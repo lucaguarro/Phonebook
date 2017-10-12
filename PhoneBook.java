@@ -27,7 +27,7 @@ public class PhoneBook
     			return contact;
     		}
     	}
-    	throw new NoSuchElementException("No contact with name '" + name + "'.");
+    	return null;
     }
 
 
