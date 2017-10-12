@@ -15,12 +15,12 @@ public class PhoneBook
         this.callHistory = new ArrayList<Call>();
     }
     
-    private Contact getContact(int number)
+    public Contact getContact(int number)
     {
     	return contacts.get(number);
     }
     
-    private Contact getContact(String name)
+    public Contact getContact(String name)
     {
     	for (Contact contact : contacts.values())
     	{
@@ -41,6 +41,11 @@ public class PhoneBook
     public void displayContact(String name)
     {
     	System.out.println(getContact(name));
+    }
+    
+    public void displayContact(int number)
+    {
+    	System.out.println(getContact(number));
     }
 
 }
