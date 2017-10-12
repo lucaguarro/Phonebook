@@ -1,6 +1,6 @@
 
 
-public class Contact {
+public class Contact implements Comparable<Contact>{
     
     private String name;
     private int phoneNumber;
@@ -71,6 +71,12 @@ public class Contact {
     {
     		this.notes = notes;
     }
+
+	@Override
+	public int compareTo(Contact otherContact) 
+	{
+		return this.name.compareTo(otherContact.name);
+	}
 }
     
 

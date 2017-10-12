@@ -1,6 +1,7 @@
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.NoSuchElementException;
 
 public class PhoneBook
@@ -45,6 +46,16 @@ public class PhoneBook
     public void displayContact(int number)
     {
     	System.out.println(getContact(number));
+    }
+    
+    public void displayAllContacts()
+    {
+    	ArrayList<Contact> mapValues = new ArrayList<>(contacts.values());
+    	Collections.sort(mapValues);
+    	for (Contact contact : mapValues)
+    	{
+    		System.out.println(contact);
+    	}
     }
     
     public void addCall(Call call)
