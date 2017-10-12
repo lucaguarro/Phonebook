@@ -1,16 +1,18 @@
 
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class PhoneBook
 {
 
     HashMap<Integer, Contact> contacts;
-
+    ArrayList<Call> callHistory;
     
     public PhoneBook()
     {
         this.contacts = new HashMap<Integer, Contact>();
+        this.callHistory = new ArrayList<Call>();
     }
     
     private Contact getContact(int number)
