@@ -78,6 +78,41 @@ public class PhoneBook
     }
     
     /**
+     * Swaps the positions of two favorites in the hierarchy
+     * @param pos1 First position to swap
+     * @param pos2 Second position to swap
+     */
+    public void swapFavorite(int pos1, int pos2)
+    {
+    	int number1 = favorites[pos1 - 1];
+    	favorites[pos1 - 1] = favorites[pos2 - 1];
+    	favorites[pos2 - 1] = number1;
+    }
+    
+    /**
+     * Removes the favorite at a given position in hierarchy
+     */
+    public void removeFavorite(int priority)
+    {
+    	favorites[priority - 1] = 0;
+    }
+    
+    /**
+     * Generate a string containing all the favorites
+     * @return
+     */
+    public String favoritesToString()
+    {
+    	String toString = "";
+    	int index = 1;
+    	for(int number : favorites)
+    	{
+    		toString += index + ". " + getContact(number).getName() + "\n";
+    	}
+    	return toString;
+    }
+    
+    /**
      * Determines whether there is a favorite contact at a given slot
      * @param priority - integer 1-5 representing slot in favorites
      * @return boolean - True if a favorite exists at this location, false otherwise
@@ -171,6 +206,7 @@ public class PhoneBook
     	String history = "";
     	for (Call call : callHistory)
     	{
+    		//Check if there's a contact so we can think about displaying it
     		if (isContact(call.getNumber()))
     		{
     			history += getContact(call.getNumber()).toString();
