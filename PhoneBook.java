@@ -48,6 +48,24 @@ public class PhoneBook
     }
     
     /**
+     * Delete a contact from the phonebook
+     * @param number - Phonenumber of contact to remove
+     */
+    public void deleteContact(int number)
+    {
+    	contacts.remove(number);
+    }
+    
+    /**
+     * Delete a contact from the phonebook
+     * @param name - Name of contact to remove
+     */
+    public void deleteContact(String name)
+    {
+    	deleteContact(getContact(name).getPhoneNumber());
+    }
+
+    /**
      * Check if a contact is in the phonebook
      * @param name - String name of contact
      * @return True if it is, false if it isnt
