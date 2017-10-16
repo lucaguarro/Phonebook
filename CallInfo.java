@@ -15,6 +15,11 @@ public class CallInfo {
 		return outgoing;
 	}
 	
+	/**
+	 * Converts the call info into a single line of text containing the date/time and whether
+	 * or not it was outgoing
+	 * @return String - that line of text
+	 */
 	public String toString()
 	{
 		if (outgoing)

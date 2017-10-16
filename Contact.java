@@ -24,6 +24,10 @@ public class Contact implements Comparable<Contact>{
         this.notes = notes;
     }
     
+    /**
+     * Convert the contact to a string containing all sorts of information about it
+     * @return String all that contact information
+     */
     public String toString()
     {
     	String text = "------------------------\n";
@@ -57,7 +61,7 @@ public class Contact implements Comparable<Contact>{
     		this.phoneNumber = phoneNumber;
     }
     
-    public String email()
+    public String getEmail()
     {
     		return this.email;
     }

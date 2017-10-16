@@ -49,7 +49,7 @@ public class PhoneBook
     
     /**
      * Check if a contact is in the phonebook
-     * @param name
+     * @param name - String name of contact
      * @return True if it is, false if it isnt
      */
     public boolean isContact(String name)
@@ -57,6 +57,11 @@ public class PhoneBook
     	return getContact(name) != null;
     }
     
+    /**
+     * Check if a contact is in the phonebook
+     * @param number - int phone number of contact
+     * @return True if it is, false if it isnt
+     */
     public boolean isContact(int number)
     {
     	return getContact(number) != null;
@@ -95,11 +100,19 @@ public class PhoneBook
         this.contacts.put(contact.getPhoneNumber(), contact);
     }
 
+    /**
+     * Prints the contact to console
+     * @param name - String name of contact to print
+     */
     public void displayContact(String name)
     {
     	System.out.println(getContact(name));
     }
     
+    /**
+     * Prints the contact to console
+     * @param number - Int number of contact to print
+     */
     public void displayContact(int number)
     {
     	System.out.println(getContact(number));
@@ -121,7 +134,7 @@ public class PhoneBook
     /**
      * Adds a call to callHistory, unless there already was a recent call, then it adds to to that call's info
      * @param number Phone number in integer form
-     * @param outgoing Boolean
+     * @param outgoing Boolean whether or not its outgoing
      */
     public void doCall(int number, boolean outgoing)
     {
@@ -139,11 +152,20 @@ public class PhoneBook
     	callHistory.add(newCall);
     }
     
+    /**
+     * Adds a call to callHistory, unless there already was a recent call, then it adds to to that call's info
+     * @param contact - Contact you want to call
+     * @param outgoing Boolean whether or not its outgoing
+     */
     public void doCall(Contact contact, boolean outgoing)
     {
     	doCall(contact.getPhoneNumber(), outgoing);
     }
     
+    /**
+     * Generate the call history in text format
+     * @return String containing entire call history
+     */
     public String getCallHistory()
     {
     	String history = "";
