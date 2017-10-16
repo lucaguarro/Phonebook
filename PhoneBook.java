@@ -64,6 +64,20 @@ public class PhoneBook
     {
     	return getContact(favorites[priority - 1]);
     }
+    
+    /**
+     * Determines whether there is a favorite contact at a given slot
+     * @param priority - integer 1-5 representing slot in favorites
+     * @return boolean - True if a favorite exists at this location, false otherwise
+     */
+    public boolean isFavorite(int priority)
+    {
+    	if(favorites[priority] > 0)
+    	{
+    		return getContact(favorites[priority]) != null;
+    	}
+    	return false;
+    }
 
     /**
      * Adds a contact to the phonebook

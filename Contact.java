@@ -6,6 +6,7 @@ public class Contact implements Comparable<Contact>{
     private int phoneNumber;
     private String email;
     private String notes;
+    private String imagePath;
     
     public Contact()
     {
@@ -76,6 +77,14 @@ public class Contact implements Comparable<Contact>{
 	public int compareTo(Contact otherContact) 
 	{
 		return this.name.compareTo(otherContact.name);
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 }
     
