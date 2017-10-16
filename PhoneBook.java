@@ -107,7 +107,8 @@ public class PhoneBook
     	int index = 1;
     	for(int number : favorites)
     	{
-    		toString += index + ". " + getContact(number).getName() + "\n";
+    		if (number > 0)
+    			toString += index + ". " + getContact(number).getName() + "\n";
     	}
     	return toString;
     }
