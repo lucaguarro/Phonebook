@@ -11,6 +11,8 @@ public class PhoneBook
     ArrayList<Call> callHistory;
     private int[] favorites;
     
+    static final String DIVIDER = "--------------------\n";
+    
     public PhoneBook()
     {
         this.contacts = new HashMap<Integer, Contact>();
@@ -53,6 +55,11 @@ public class PhoneBook
     public boolean isContact(String name)
     {
     	return getContact(name) != null;
+    }
+    
+    public boolean isContact(int number)
+    {
+    	return getContact(number) != null;
     }
     
     /**
@@ -137,6 +144,23 @@ public class PhoneBook
     	doCall(contact.getPhoneNumber(), outgoing);
     }
     
+    public String getCallHistory()
+    {
+    	String history = "";
+    	for (Call call : callHistory)
+    	{
+    		if (isContact(call.getNumber()))
+    		{
+    			history += getContact(call.getNumber()).toString();
+    		}
+    		else
+    		{
+    			history += DIVIDER + call.getNumber() + "\n";
+    		}
+    		history += call.callInfoToString();
+    	}
+    	return history;
+    }
    
 
 }

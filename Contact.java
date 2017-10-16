@@ -34,7 +34,6 @@ public class Contact implements Comparable<Contact>{
     	{
     		text += "Notes:\n" + notes + "\n";
     	}
-    	text += "------------------------\n";
     	return text;
     }
 

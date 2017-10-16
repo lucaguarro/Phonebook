@@ -97,7 +97,7 @@ public class Main {
 				return true;
 			}
 			else if(input.equals("1")) {
-				//System.out(myPhonebook.getCallHistory());
+				System.out.println(myPhonebook.getCallHistory());
 			}
 			else if(input.equals("2")) {
 				
