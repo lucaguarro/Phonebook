@@ -131,6 +131,12 @@ public class PhoneBook
     	Call newCall = new Call(number, outgoing);
     	callHistory.add(newCall);
     }
+    
+    public void doCall(Contact contact, boolean outgoing)
+    {
+    	doCall(contact.getPhoneNumber(), outgoing);
+    }
+    
    
 
 }

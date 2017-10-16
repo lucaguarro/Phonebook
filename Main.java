@@ -61,16 +61,16 @@ public class Main {
 				justDigits = Integer.parseInt(input.replaceAll("\\D", ""));
 			}
 			if(justDigits >= 5 && justDigits < 0) {
-				if(false/*getFavorite(justDigits)*/) {
-					
+				if(myPhonebook.isFavorite(justDigits)) {
+					myPhonebook.doCall(myPhonebook.getFavorite(justDigits), outgoing);
 				}
 			}
 			else if(input.replaceAll("\\D", "").length() == 10) {
-				//callNumber(int phonenumber, bool outgoing)
+				myPhonebook.doCall(justDigits, outgoing);
 			}
-			else if(false/*Search through contacts via input*/) {
+			else if(myPhonebook.isContact(input)) {
 				//If the contact was found
-				//callNumber(phonenumer, outgoing)
+				myPhonebook.doCall(myPhonebook.getContact(input), outgoing);
 			}
 			else if(input.equals("<")) {
 				return false;
