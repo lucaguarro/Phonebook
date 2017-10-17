@@ -144,6 +144,7 @@ public class PhoneBook
     	{
     		if (number > 0)
     			toString += index + ". " + getContact(number).getName() + "\n";
+    		index++;
     	}
     	return toString;
     }
