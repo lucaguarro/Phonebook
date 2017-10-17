@@ -51,19 +51,24 @@ public class Contact implements Comparable<Contact>{
     		this.name = name;
     }
     
-    public int getPhoneNumber()
+    public long getPhoneNumber()
     {
     		return this.phoneNumber;
     }
     
-    public void setPhoneNumber(int phoneNumber)
+    public void setPhoneNumber(long number)
     {
-    		this.phoneNumber = phoneNumber;
+    		this.phoneNumber = number;
     }
     
     public String getEmail()
     {
     		return this.email;
+    }
+    
+    public void setEmail(String email)
+    {
+    		this.email = email;
     }
     
     public String getNotes()

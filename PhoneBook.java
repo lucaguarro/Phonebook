@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 public class PhoneBook
 {
 
-    HashMap<Integer, Contact> contacts;
+    HashMap<Long, Contact> contacts;
     ArrayList<Call> callHistory;
     private long[] favorites;
     
@@ -15,7 +15,7 @@ public class PhoneBook
     
     public PhoneBook()
     {
-        this.contacts = new HashMap<Integer, Contact>();
+        this.contacts = new HashMap<Long, Contact>();
         this.callHistory = new ArrayList<Call>();
         this.favorites = new long[5];
     }

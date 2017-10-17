@@ -169,21 +169,89 @@ public class Main {
 			if(input.equals("<")) {
 				return false;
 			}
-			else if(input.equals("DONE"){
+			else if(input.equals("DONE")){
 				return true;
 			}
 			if(myPhonebook.isContact(input)) {
 				myPhonebook.deleteContact(input);
 			}else {
 				inputValid = false;
+				System.out.println("That contact does not exist. Try again.");
+				
 			}
 		}while(!inputValid);
-		
+		return false;
 	}
 
 	private static boolean editContactDialog() {
 		// TODO Auto-generated method stub
-		
+		boolean inputValid;
+		System.out.println("Please type in the name of the contact you would like to edit");
+		System.out.println("At any time you can enter '<' to go back or 'DONE' to exit");
+		String input;
+		do {
+			input = reader.next();
+			inputValid = true;
+			if(input.equals("<")) {
+				return false;
+			}
+			else if(input.equals("DONE")){
+				return true;
+			}
+			if(myPhonebook.isContact(input)) {
+				return editingContact(myPhonebook.getContact(input));
+			}else {
+				inputValid = false;
+				System.out.println("That contact does not exist. Try again.");
+			}
+		}while(!inputValid);		
+		return false;
+	}
+
+	private static boolean editingContact(Contact contact) {
+		// TODO Auto-generated method stub
+		String[] options = new String[]{"1: Edit Name","2: Edit Number","3: Edit Email", "4: Edit Notes", "<: Go Back"};
+		String input;
+		boolean inputValid = true;
+		do {
+			System.out.println("Please choose a property to edit");
+			System.out.println(Arrays.toString(options));	
+			input = reader.next();
+			if(input.equals("DONE")) {
+				return true;
+			}
+			else if(input.equals("1")) {
+				System.out.println("Please enter the new name:");
+				input = reader.next();
+				contact.setName(input);
+			}
+			else if(input.equals("2")) {
+				System.out.println("Please enter the new name:");
+				input = reader.next();
+				try {
+					long number = Long.parseLong(input);
+					contact.setPhoneNumber(number);
+				}
+				catch(Exception e) {
+					System.out.println(INVALIDINPUT);
+					inputValid = false;
+				}
+			}		
+			else if(input.equals("3")) {
+				System.out.println("Please enter the new email:");
+				input = reader.next();
+				contact.setEmail(input);
+			}
+			else if(input.equals("4")) {
+				System.out.println("Please enter the new notes:");
+				input = reader.next();	//Show contacts here
+				contact.setNotes(input);
+			} 
+			else if(input.equals("<")) {
+				return false;
+			}
+		}while(!inputValid);
+		return false;
 	}
 
 	private static boolean addContactDialog() {
@@ -191,8 +259,8 @@ public class Main {
 		String[] contactPrompts = new String[]{"Please type in the name of the contact you would like to add"
 				,"Please enter the number", "Please enter the email", "Please enter any notes"};
 		String input;
-		String name, email, notes;
-		long number;
+		String name = "", email = "", notes = "";
+		long number = 0;
 		int i = 0;
 		for(String contactPrompt : contactPrompts) {
 			System.out.println(contactPrompt);
@@ -203,34 +271,35 @@ public class Main {
 			if(input.equals("<")) {
 				return false;
 			}
-			else if(input.equals("DONE"){
+			else if(input.equals("DONE")){
 				return true;
 			}
 			switch(i) {
-			case 0:
-				name = input;
-				break;
-			case 1:
-				try {
-					number = Long.parseLong(input);
-				}
-				catch(Exception e) {
-					System.out.println(INVALIDINPUT);
-					i--; //redo it
-				}
-				break;
-			case 2:
-				email = input;
-				break;
-			case 3:
-				notes = input;
-				break;
+				case 0:
+					name = input;
+					break;
+				case 1:
+					try {
+						number = Long.parseLong(input);
+					}
+					catch(Exception e) {
+						System.out.println(INVALIDINPUT);
+						i--; //redo it
+					}
+					break;
+				case 2:
+					email = input;
+					break;
+				case 3:
+					notes = input;
+					break;
 			}
 			
 			i++;
 		}
 		Contact c = new Contact(name, number, email, notes);
 		myPhonebook.addContact(c);
+		return false;
 	}
 
 }
