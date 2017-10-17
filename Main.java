@@ -174,11 +174,39 @@ public class Main {
 	private static boolean deleteFavoriteDialog() {
 		System.out.println("Please enter the favorite you want to delete");
 		boolean validInput;
+		int priority = -1;
 		String input;
 		do {
 			validInput = true;
-			
+			input = reader.next();
+			if(input.equals("<")) {
+				return false;
+			}
+			else if(input.equals("DONE")) {
+				return true;
+			}
+			try {
+				priority = Integer.parseInt(input);
+				if(priority < 1 && priority > 5) {
+					throw Exception;
+				} 
+			}
+			catch(Exception e) {
+				System.out.println("That was not a number between 1 and 5.");
+				System.out.println("Try again or enter 'DONE' to quit or '<' to go back");
+				validInput = false;;
+			}	
+			if(priority > -1 && myPhonebook.isFavorite(priority)) {
+				myPhonebook.removeFavorite(priority);
+			}
+			else {
+				System.out.println("You do not have that favorite stored");
+				System.out.println("Try again or enter 'DONE' to quit or '<' to go back");
+				validInput = false;
+			}
 		} while (!validInput);
+
+		
 		return false;
 	}
 
