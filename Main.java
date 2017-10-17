@@ -153,7 +153,7 @@ public class Main {
 				endProgram = deleteFavoriteDialog();
 			}
 			else if(input.equals("4")) {
-				//Show contacts here
+				System.out.println(myPhonebook.favoritesToString());
 			}
 			else if(input.equals("<")) {
 				return false;
@@ -254,7 +254,6 @@ public class Main {
 					break;
 			}
 		}
-		System.out.println("IT got called");
 		myPhonebook.addFavorite(c.getPhoneNumber(), priority, "");
 		return false;
 	}
