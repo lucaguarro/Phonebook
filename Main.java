@@ -66,14 +66,20 @@ public class Main {
 			if(justDigits >= 5 && justDigits < 0) {
 				if(myPhonebook.isFavorite((int) justDigits)) {
 					myPhonebook.doCall(myPhonebook.getFavorite((int) justDigits), outgoing);
+					System.out.println("Phone call ended.");
+					return false;
 				}
 			}
 			else if(input.replaceAll("\\D", "").length() == 10) {
 				myPhonebook.doCall(justDigits, outgoing);
+				System.out.println("Phone call ended.");
+				return false;
 			}
 			else if(myPhonebook.isContact(input)) {
 				//If the contact was found
 				myPhonebook.doCall(myPhonebook.getContact(input), outgoing);
+				System.out.println("Phone call ended.");
+				return false;
 			}
 			else if(input.equals("<")) {
 				return false;
