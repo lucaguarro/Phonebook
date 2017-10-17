@@ -172,7 +172,7 @@ public class Main {
 		do {
 			validInput = true;
 			
-		} while (!validInput)
+		} while (!validInput);
 		return false;
 	}
 
