@@ -166,7 +166,13 @@ public class Main {
 	}
 
 	private static boolean deleteFavoriteDialog() {
-		// TODO Auto-generated method stub
+		System.out.println("Please enter the favorite you want to delete");
+		boolean validInput;
+		String input;
+		do {
+			validInput = true;
+			
+		} while (!validInput)
 		return false;
 	}
 
