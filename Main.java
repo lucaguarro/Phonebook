@@ -279,7 +279,7 @@ public class Main {
 				endProgram = deleteContactDialog();
 			}
 			else if(input.equals("4")) {
-				//Show contacts here
+				myPhonebook.displayAllContacts();
 			}
 			else if(input.equals("<")) {
 				return false;
