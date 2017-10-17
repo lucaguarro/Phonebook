@@ -86,6 +86,23 @@ public class PhoneBook
     }
     
     /**
+     * Add a contact to a specific favorite spot and add a path to their image
+     * @param phoneNumber - Phone number of contact to add
+     * @param priority - What slot to add them to
+     * @return True if it worked, false otherwise
+     */
+    public boolean addFavorite(long phoneNumber, int priority, String filePath)
+    {
+    	if(isContact(phoneNumber) && favorites[priority] <= 0)
+    	{
+    		favorites[priority] = phoneNumber;
+    		getContact(phoneNumber).setImagePath(filePath);
+    		return true;
+    	}
+    	return false;
+    }
+    
+    /**
      * 
      * @param priority - Which favorite to return from 1 - 5 (Does not start at 0)
      * @return Contact - favorite contact at this location
