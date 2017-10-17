@@ -119,7 +119,7 @@ public class Main {
 				return true;
 			}
 			else if(input.equals("1")) {
-				System.out.println(myPhonebook.getCallHistory());
+				endProgram = getCallHistory();
 			}
 			else if(input.equals("2")) {
 				endProgram = editPhonebookMenu();
@@ -135,6 +135,44 @@ public class Main {
 			}
 		}while(!inputValid || !endProgram);
 		return endProgram;
+	}
+
+	private static boolean getCallHistory() {
+		System.out.println("Please enter the name or number of the contact whose call history you want to display. "
+				+ "Or enter 1 to display all contacts.");
+		boolean validInput;
+		long justDigits = -1;
+		String input;
+		do {
+			validInput = true;
+			input = reader.next();
+			if(input.equals("<")) {
+				return false;
+			}
+			else if(input.equals("DONE")) {
+				return true;
+			}
+			input = reader.next();
+			if(input.replaceAll("\\D", "").length() == 10) {
+				justDigits = Long.parseLong(input);
+				myPhonebook.contactCallsToString(justDigits);
+			}
+			else if(myPhonebook.isContact(input)) {
+				myPhonebook.contactCallsToString(input);
+				System.out.println("Phone call ended.");
+				return false;
+			}	
+			else {
+				System.out.println("That was not a valid number or contact name");
+				System.out.println("Try again or enter 'DONE' to quit or '<' to go back");
+				validInput = false;
+			}
+		} while (!validInput);
+
+		
+		return false;
+		System.out.println(myPhonebook.getCallHistory());
+		return false;
 	}
 
 	private static boolean editFavorites() {
