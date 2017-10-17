@@ -64,7 +64,7 @@ public class Main {
 				String phoneNumber = input.replaceAll("[^0-9]", "");
 				justDigits = Long.parseLong(phoneNumber);
 			}
-			if(justDigits >= 5 && justDigits < 0) {
+			if(justDigits <= 5 && justDigits > 0) {
 				if(myPhonebook.isFavorite((int) justDigits)) {
 					myPhonebook.doCall(myPhonebook.getFavorite((int) justDigits), outgoing);
 					System.out.println("Phone call ended.");
