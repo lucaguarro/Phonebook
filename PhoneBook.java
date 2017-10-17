@@ -89,7 +89,7 @@ public class PhoneBook
      * Add a contact to a specific favorite spot and add a path to their image
      * @param phoneNumber - Phone number of contact to add
      * @param priority - What slot to add them to
-     * @return True if it worked, false otherwise
+     * @return
      */
     public boolean addFavorite(long phoneNumber, int priority, String filePath)
     {
