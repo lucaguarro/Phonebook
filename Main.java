@@ -9,6 +9,8 @@ public class Main {
 	static String INVALIDINPUT = "You did not enter a valid input. Please try again.";
 	
 	public static void main(String[] args) {
+		myPhonebook.addContact(new Contact("Josh", 6617066161l, "email", "notes"));
+		myPhonebook.addFavorite(6617066161l, 1, "C:\\Users\\Josh\\Desktop\\contact.jpg");
 		showMainMenu();
 		reader.close();
 	}

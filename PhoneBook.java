@@ -102,6 +102,14 @@ public class PhoneBook
     	return false;
     }
     
+    public void favoriteFrame(int priority)
+    {
+    	Contact favorite = getFavorite(priority);
+    	FavoriteContactFrame contactFrame = new FavoriteContactFrame(favorite.getImagePath(), 900, 600, favorite.getName(), 
+    			Contact.formatPhoneNumber(favorite.getPhoneNumber()), favorite.getEmail(), favorite.getNotes());
+    	  contactFrame.displayContactFrame();
+    }
+    
     /**
      * 
      * @param priority - Which favorite to return from 1 - 5 (Does not start at 0)
