@@ -519,7 +519,7 @@ public class Main {
 				contact.setName(input);
 			}
 			else if(input.equals("2")) {
-				System.out.println("Please enter the new name:");
+				System.out.println("Please enter the new number:");
 				input = reader.next();
 				try {
 					long number = Long.parseLong(input);
