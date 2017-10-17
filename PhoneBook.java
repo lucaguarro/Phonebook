@@ -156,9 +156,9 @@ public class PhoneBook
      */
     public boolean isFavorite(int justDigits)
     {
-    	if(favorites[justDigits] > 0)
+    	if(favorites[justDigits - 1] > 0)
     	{
-    		return getContact(favorites[justDigits]) != null;
+    		return getContact(favorites[justDigits - 1]) != null;
     	}
     	return false;
     }
