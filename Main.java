@@ -393,7 +393,15 @@ public class Main {
 				myPhonebook.displayAllContacts();
 			}
 			else if(myPhonebook.isContact(input)) {
-				myPhonebook.displayContact(input);
+				String name = input;
+				myPhonebook.displayContact(name);
+				System.out.println("Do you want to call this contact. Enter y or n.");
+				input = reader.next();
+				if(input.equals("y")) {
+					myPhonebook.doCall(myPhonebook.getContact(name), true);
+				}
+				
+				
 			}
 			else {
 				System.out.println("That was not a name in your contacts");
