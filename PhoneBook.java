@@ -47,6 +47,40 @@ public class PhoneBook
     	return null;
     }
     
+    private Call getContactCall(long number)
+    {
+    	for (Call call : callHistory)
+    	{
+    		if (call.getNumber() == number)
+    		{
+    			return call;
+    		}
+    	}
+    	return null;
+    }
+    
+    public String contactCallsToString(long number)
+    {
+    	Call call = getContactCall(number);
+    	String toString = "";
+    	if(isContact(number))
+    	{
+    		Contact contact = getContact(number);
+	    	toString += contact.toString();
+    	}
+    	else
+    	{
+    		toString += "Number: " + number + "\n";
+    	}
+    	toString += call.callInfoToString();
+    	return toString;
+    }
+    
+    public String contactCallsToString(String name)
+    {
+    	return contactCallsToString(getContact(name).getPhoneNumber());
+    }
+    
     /**
      * Delete a contact from the phonebook
      * @param number - Phonenumber of contact to remove
