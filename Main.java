@@ -159,6 +159,25 @@ public class Main {
 
 	private static boolean deleteContactDialog() {
 		// TODO Auto-generated method stub
+		boolean inputValid;
+		System.out.println("Please type in the name of the contact you would like to delete");
+		System.out.println("At any time you can enter '<' to go back or 'DONE' to exit");
+		String input;
+		do {
+			input = reader.next();
+			inputValid = true;
+			if(input.equals("<")) {
+				return false;
+			}
+			else if(input.equals("DONE"){
+				return true;
+			}
+			if(myPhonebook.isContact(input)) {
+				myPhonebook.deleteContact(input);
+			}else {
+				inputValid = false;
+			}
+		}while(!inputValid);
 		
 	}
 
