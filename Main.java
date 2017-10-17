@@ -3,6 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+	private static final Exception Exception = null;
 	static Scanner reader = new Scanner(System.in);
 	static PhoneBook myPhonebook = new PhoneBook();
 	static String INVALIDINPUT = "You did not enter a valid input. Please try again.";
@@ -130,11 +131,13 @@ public class Main {
 		String input = "";
 		String[] options = new String[]{"1: Add Favorite","2: Swap Favorites","3: Delete Favorite","4: Show Favorites", "<: Go Back"};
 		boolean endProgram = false;
-		input = reader.next();
+		
 		boolean inputValid;
 		do {
+			
 			System.out.println("Please choose an option");
 			System.out.println(Arrays.toString(options));
+			input = reader.next();
 			inputValid = true;
 			if(input.equals("DONE")) {
 				System.out.println("Exiting...");
@@ -168,15 +171,16 @@ public class Main {
 	}
 
 	private static boolean swapFavoriteDialog() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	private static boolean addFavoriteDialog() {
 		System.out.println("Please enter the favorites you want to swap");
 		int swap[] = new int[2];
+		int priority;
 		String input;
 		for(int i = 0; i < 2; i++) {
+			if(i == 0) {
+				System.out.println("First favorite");
+			} else if (i == 1) {
+				System.out.println("Second favorite");
+			}
 			input = reader.next();
 			if(input.equals("DONE")) {
 				return true;
@@ -185,9 +189,60 @@ public class Main {
 				return false;
 			}
 			try {
+				priority = Integer.parseInt(input);
+				if(priority >= 1 && priority <= 5) {
+					swap[i] = priority;
+				} else {
+					throw Exception;
+				}
+				
 			}
 			catch(Exception e) {
+				System.out.println("That was not a number between 1 and 5. Try again.");
 				i--;
+			}
+		}
+		myPhonebook.swapFavorite(swap[0], swap[1]);
+		return false;
+	}
+
+	private static boolean addFavoriteDialog() {
+		
+		int priority;
+		String input;
+		Contact c;
+		String[] favPrompts = new String [] {"Please enter the favorite you want to add", "Please enter the name of the contact"};
+		int number;
+		for(int i = 0; i < 2; i++) {
+			System.out.println(favPrompts[i]);
+			if(i == 0) {
+				System.out.println("At any time you can enter '<' to go back or 'DONE' to exit");
+			}
+			input = reader.next();
+			if(input.equals("<")) {
+				return false;
+			}
+			else if(input.equals("DONE")){
+				return true;
+			}
+			switch(i) {
+				case 0:
+					try {
+						number = Integer.parseInt(input);
+					}
+					catch(Exception e) {
+						System.out.println("That is not a number between 1 and 5");
+						i--;
+					}
+					break;
+				case 1:
+					if(myPhonebook.isContact(input)) {
+						c = myPhonebook.getContact(input);
+					} else {
+						System.out.println("That is not a contact in your phonebook");
+						i--;
+					}
+					break;
 			}
 		}
 		return false;
