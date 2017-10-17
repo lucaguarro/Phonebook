@@ -95,7 +95,7 @@ public class PhoneBook
     {
     	if(isContact(phoneNumber) && favorites[priority] <= 0)
     	{
-    		favorites[priority] = phoneNumber;
+    		favorites[priority - 1] = phoneNumber;
     		getContact(phoneNumber).setImagePath(filePath);
     		return true;
     	}
