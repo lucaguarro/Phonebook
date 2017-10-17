@@ -254,6 +254,7 @@ public class Main {
 					break;
 			}
 		}
+		System.out.println("IT got called");
 		myPhonebook.addFavorite(c.getPhoneNumber(), priority, "");
 		return false;
 	}
