@@ -102,6 +102,10 @@ public class PhoneBook
     	return false;
     }
     
+    /**
+     * Make a jpanel that displays a favorite contact
+     * @param priority - Which contact you want to display
+     */
     public void favoriteFrame(int priority)
     {
     	Contact favorite = getFavorite(priority);
