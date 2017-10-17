@@ -9,6 +9,8 @@ public class Main {
 	static String INVALIDINPUT = "You did not enter a valid input. Please try again.";
 	
 	public static void main(String[] args) {
+		myPhonebook.addContact(new Contact("Josh", 6617066161l, "email", "notes"));
+		myPhonebook.addFavorite(6617066161l, 1, "C:\\Users\\Josh\\Desktop\\contact.jpg");
 		showMainMenu();
 		reader.close();
 	}
@@ -70,10 +72,12 @@ public class Main {
 			}
 			if(justDigits <= 5 && justDigits > 0) {
 				if(myPhonebook.isFavorite((int) justDigits)) {
-					myPhonebook.doCall(myPhonebook.getFavorite((int) justDigits), outgoing);
+					myPhonebook.doCall(myPhonebook.getFavorite((int)justDigits), outgoing);
 					System.out.println("Phone call ended.");
 					return false;
 				}
+				System.out.println("Favorite not found");
+				return false;
 			}
 			else if(input.replaceAll("\\D", "").length() == 10) {
 				myPhonebook.doCall(justDigits, outgoing);
