@@ -88,6 +88,13 @@ public class PhoneBook
     public void deleteContact(long number)
     {
     	contacts.remove(number);
+    	for (long fav : favorites)
+    	{
+    		if(number == fav)
+    		{
+    			fav = -1;
+    		}
+    	}
     }
     
     /**

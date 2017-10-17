@@ -523,7 +523,7 @@ public class Main {
 				input = reader.next();
 				try {
 					long number = Long.parseLong(input);
-					contact.setPhoneNumber(number);
+					myPhonebook.changePhoneNumber(contact, number);
 				}
 				catch(Exception e) {
 					System.out.println(INVALIDINPUT);
