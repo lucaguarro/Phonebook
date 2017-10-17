@@ -102,13 +102,15 @@ public class Main {
 		 //this boolean is used for the do-while loop
 		boolean endProgram = false;
 		String input = "";
-		System.out.println("Please choose an option");
+		//System.out.println("Please choose an option");
 		String[] options = new String[]{"1: Get Call History","2: Edit Phonebook","3: Edit Favorites", "<: Go Back"};
-		System.out.println(Arrays.toString(options));
+		//System.out.println(Arrays.toString(options));
 		
 		boolean inputValid;
 		do {
 			inputValid = true;
+			System.out.println("Please choose an option");
+			System.out.println(Arrays.toString(options));
 			input = reader.next();
 			if(input.equals("DONE")) {
 				System.out.println("Exiting...");
