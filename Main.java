@@ -92,10 +92,11 @@ public class Main {
 		System.out.println("Please choose an option");
 		String[] options = new String[]{"1: Get Call History","2: Edit Phonebook","3: Edit Favorites", "<: Go Back"};
 		System.out.println(Arrays.toString(options));
-		input = reader.next();
+		
 		boolean inputValid;
 		do {
 			inputValid = true;
+			input = reader.next();
 			if(input.equals("DONE")) {
 				System.out.println("Exiting...");
 				return true;
@@ -107,7 +108,7 @@ public class Main {
 				endProgram = editPhonebookMenu();
 			}
 			else if(input.equals("3")) {
-				
+				endProgram = editFavorites();
 			}
 			else if(input.equals("<")) {
 				return false;
@@ -119,16 +120,83 @@ public class Main {
 		return false;
 	}
 
-	private static boolean editPhonebookMenu() {
+	private static boolean editFavorites() {
 		String input = "";
-		String[] options = new String[]{"1: Add Contact","2: Edit Contact","3: Delete Contact", "4: Display Contacts", "<: Go Back"};
+		String[] options = new String[]{"1: Add Favorite","2: Swap Favorites","3: Delete Favorite","4: Show Favorites", "<: Go Back"};
 		boolean endProgram = false;
-		//String[] options = new String[]{"1: Get Call History","2: Edit Phonebook","3: Edit Favorites", "4: Go Back"};	
 		input = reader.next();
 		boolean inputValid;
 		do {
 			System.out.println("Please choose an option");
 			System.out.println(Arrays.toString(options));
+			inputValid = true;
+			if(input.equals("DONE")) {
+				System.out.println("Exiting...");
+				return true;
+			}
+			else if(input.equals("1")) {
+				endProgram = addFavoriteDialog();
+			}
+			else if(input.equals("2")) {
+				endProgram = swapFavoriteDialog();
+			}
+			else if(input.equals("3")) {
+				endProgram = deleteFavoriteDialog();
+			}
+			else if(input.equals("4")) {
+				//Show contacts here
+			}
+			else if(input.equals("<")) {
+				return false;
+			}
+			else {
+				inputValid = false;
+			}
+		}while(!inputValid);
+		return endProgram;
+	}
+
+	private static boolean deleteFavoriteDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private static boolean swapFavoriteDialog() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private static boolean addFavoriteDialog() {
+		System.out.println("Please enter the favorites you want to swap");
+		int swap[] = new int[2];
+		String input;
+		for(int i = 0; i < 2; i++) {
+			input = reader.next();
+			if(input.equals("DONE")) {
+				return true;
+			}
+			else if(input.equals("<")) {
+				return false;
+			}
+			try {
+			}
+			catch(Exception e) {
+				i--;
+			}
+		}
+		return false;
+	}
+
+	private static boolean editPhonebookMenu() {
+		String input = "";
+		String[] options = new String[]{"1: Add Contact","2: Edit Contact","3: Delete Contact", "4: Display Contacts", "<: Go Back"};
+		boolean endProgram = false;
+		
+		boolean inputValid;
+		do {
+			System.out.println("Please choose an option");
+			System.out.println(Arrays.toString(options));
+			input = reader.next();
 			inputValid = true;
 			if(input.equals("DONE")) {
 				System.out.println("Exiting...");
@@ -150,7 +218,6 @@ public class Main {
 				return false;
 			}
 			else {
-
 				inputValid = false;
 			}
 		}while(!inputValid || !endProgram);
