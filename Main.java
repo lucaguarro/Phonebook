@@ -537,7 +537,7 @@ public class Main {
 			}
 			else if(input.equals("4")) {
 				System.out.println("Please enter the new notes:");
-				input = reader.next();	//Show contacts here
+				input = reader.nextLine();	//Show contacts here
 				contact.setNotes(input);
 			} 
 			else if(input.equals("<")) {
