@@ -214,9 +214,9 @@ public class Main {
 
 	private static boolean addFavoriteDialog() {
 		
-		int priority;
+		int priority = -1;
 		String input;
-		Contact c;
+		Contact c = new Contact();
 		String[] favPrompts = new String [] {"Please enter the favorite you want to add", "Please enter the name of the contact"};
 		int number;
 		for(int i = 0; i < 2; i++) {
@@ -235,6 +235,9 @@ public class Main {
 				case 0:
 					try {
 						number = Integer.parseInt(input);
+						if (number <= 0 || number > 5)
+							throw new RuntimeException("Not between 1 and 5");
+						priority = number;
 					}
 					catch(Exception e) {
 						System.out.println("That is not a number between 1 and 5");
@@ -251,6 +254,7 @@ public class Main {
 					break;
 			}
 		}
+		myPhonebook.addFavorite(c.getPhoneNumber(), priority, "");
 		return false;
 	}
 
