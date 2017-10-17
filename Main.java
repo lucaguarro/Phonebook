@@ -360,7 +360,7 @@ public class Main {
 				endProgram = deleteContactDialog();
 			}
 			else if(input.equals("4")) {
-				myPhonebook.displayAllContacts();
+				endProgram = displayContactsMenu();
 			}
 			else if(input.equals("<")) {
 				return false;
@@ -370,6 +370,37 @@ public class Main {
 			}
 		}while(!inputValid || !endProgram);
 		return endProgram;
+	}
+
+	private static boolean displayContactsMenu() {
+		// TODO Auto-generated method stub
+		String input = "";
+		String options = "Enter 1 to display all contacts or the name of the contact you wish to display";
+		boolean endProgram = false;
+		boolean inputValid;
+		do {
+			inputValid = true;
+			System.out.println(options);
+			System.out.println("At any time you can type DONE to quit or < to go back");
+			input = reader.next();
+			if(input.equals("DONE")) {
+				return true;
+			}
+			else if(input.equals("<")) {
+				return false;
+			}
+			else if(input.equals("1")) {
+				myPhonebook.displayAllContacts();
+			}
+			else if(myPhonebook.isContact(input)) {
+				myPhonebook.displayContact(input);
+			}
+			else {
+				System.out.println("That was not a name in your contacts");
+				inputValid = false;
+			}
+		}while(!inputValid);
+		return false;
 	}
 
 	private static boolean deleteContactDialog() {
