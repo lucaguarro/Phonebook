@@ -34,6 +34,9 @@ public class Main {
 			else if (input.equals("3")) {
 				endProgram = showOptions();
 			}
+			else if (input.equals("DONE")) {
+				endProgram = true;
+			}
 			else {
 				System.out.println(INVALIDINPUT);
 				System.out.println(Arrays.toString(options));
@@ -42,7 +45,8 @@ public class Main {
 				System.out.println("Welcome to your phone. Please choose an option");
 				System.out.println(Arrays.toString(options));				
 			}
-		}while(!input.equals("DONE") || endProgram);
+		}while(!endProgram);
+		System.out.println("App turned off.");
 	}
 
 	private static boolean doCall(boolean outgoing) {
@@ -125,8 +129,8 @@ public class Main {
 			else {
 				inputValid = false;
 			}
-		}while(!inputValid || endProgram);
-		return false;
+		}while(!inputValid || !endProgram);
+		return endProgram;
 	}
 
 	private static boolean editFavorites() {
