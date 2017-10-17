@@ -155,14 +155,15 @@ public class Main {
 			else if(input.equals("DONE")) {
 				return true;
 			}
-			input = reader.next();
 			if(input.replaceAll("\\D", "").length() == 10) {
 				justDigits = Long.parseLong(input);
-				myPhonebook.contactCallsToString(justDigits);
+				System.out.println(myPhonebook.contactCallsToString(justDigits));
+			}
+			else if(input.equals("1")) {
+				System.out.println(myPhonebook.getCallHistory());
 			}
 			else if(myPhonebook.isContact(input)) {
-				myPhonebook.contactCallsToString(input);
-				System.out.println("Phone call ended.");
+				System.out.println(myPhonebook.contactCallsToString(input));
 				return false;
 			}	
 			else {
@@ -172,9 +173,6 @@ public class Main {
 			}
 		} while (!validInput);
 
-		
-		return false;
-		System.out.println(myPhonebook.getCallHistory());
 		return false;
 	}
 
