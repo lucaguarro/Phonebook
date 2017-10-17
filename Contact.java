@@ -3,7 +3,7 @@
 public class Contact implements Comparable<Contact>{
     
     private String name;
-    private int phoneNumber;
+    private long phoneNumber;
     private String email;
     private String notes;
     private String imagePath;
@@ -16,7 +16,7 @@ public class Contact implements Comparable<Contact>{
     	this.notes = "";
     }
         
-    public Contact(String name, int phoneNumber, String email, String notes) 
+    public Contact(String name, long phoneNumber, String email, String notes) 
     {
         this.name = name;
         this.phoneNumber = phoneNumber;

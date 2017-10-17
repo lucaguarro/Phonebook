@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -86,9 +87,10 @@ public class Main {
 
 	private static boolean showOptions() {
 		 //this boolean is used for the do-while loop
+		boolean endProgram = false;
 		String input = "";
 		System.out.println("Please choose an option");
-		String[] options = new String[]{"1: Get Call History","2: Edit Phonebook","3: Edit Favorites", "4: Go Back"};
+		String[] options = new String[]{"1: Get Call History","2: Edit Phonebook","3: Edit Favorites", "<: Go Back"};
 		System.out.println(Arrays.toString(options));
 		input = reader.next();
 		boolean inputValid;
@@ -102,19 +104,114 @@ public class Main {
 				System.out.println(myPhonebook.getCallHistory());
 			}
 			else if(input.equals("2")) {
-				
+				endProgram = editPhonebookMenu();
 			}
 			else if(input.equals("3")) {
 				
 			}
-			else if(input.equals("4")) {
+			else if(input.equals("<")) {
 				return false;
 			}
 			else {
 				inputValid = false;
 			}
-		}while(!inputValid);
+		}while(!inputValid || endProgram);
 		return false;
+	}
+
+	private static boolean editPhonebookMenu() {
+		String input = "";
+		String[] options = new String[]{"1: Add Contact","2: Edit Contact","3: Delete Contact", "4: Display Contacts", "<: Go Back"};
+		boolean endProgram = false;
+		//String[] options = new String[]{"1: Get Call History","2: Edit Phonebook","3: Edit Favorites", "4: Go Back"};	
+		input = reader.next();
+		boolean inputValid;
+		do {
+			System.out.println("Please choose an option");
+			System.out.println(Arrays.toString(options));
+			inputValid = true;
+			if(input.equals("DONE")) {
+				System.out.println("Exiting...");
+				return true;
+			}
+			else if(input.equals("1")) {
+				endProgram = addContactDialog();
+			}
+			else if(input.equals("2")) {
+				endProgram = editContactDialog();
+			}
+			else if(input.equals("3")) {
+				endProgram = deleteContactDialog();
+			}
+			else if(input.equals("4")) {
+				//Show contacts here
+			}
+			else if(input.equals("<")) {
+				return false;
+			}
+			else {
+
+				inputValid = false;
+			}
+		}while(!inputValid || !endProgram);
+		return endProgram;
+	}
+
+	private static boolean deleteContactDialog() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static boolean editContactDialog() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static boolean addContactDialog() {
+		// TODO Auto-generated method stub
+		String[] contactPrompts = new String[]{"Please type in the name of the contact you would like to add"
+				,"Please enter the number", "Please enter the email", "Please enter any notes"};
+		String input;
+		String name, email, notes;
+		long number;
+		int i = 0;
+		for(String contactPrompt : contactPrompts) {
+			System.out.println(contactPrompt);
+			if(i == 0) {
+				System.out.println("At any time you can enter '<' to go back or 'DONE' to exit");
+			}
+			input = reader.next();
+			if(input.equals("<")) {
+				return false;
+			}
+			else if(input.equals("DONE"){
+				return true;
+			}
+			switch(i) {
+			case 0:
+				name = input;
+				break;
+			case 1:
+				try {
+					number = Long.parseLong(input);
+				}
+				catch(Exception e) {
+					System.out.println(INVALIDINPUT);
+					i--; //redo it
+				}
+				break;
+			case 2:
+				email = input;
+				break;
+			case 3:
+				notes = input;
+				break;
+			}
+			
+			i++;
+		}
+		Contact c = new Contact(name, number, email, notes);
+		myPhonebook.addContact(c);
 	}
 
 }
