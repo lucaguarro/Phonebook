@@ -139,17 +139,4 @@ public class FavoriteContactFrame extends JPanel{
 	    return new Dimension(new_width, new_height);
 	}
 
-  /*--------------- Class Tester ----------------*/
-  public static void main(String arg[]){
-
-	  int fWidth = 900;
-	  int fHeight = 600;
-	  
-
-	  FavoriteContactFrame contact2 = new FavoriteContactFrame("C:\\Users\\kapiv\\OneDrive\\Pictures\\Camera imports\\2017-09-06\\20170811_063345.JPG", 900, 600, "Katherine Varela", "(555) 555-555"
-	  		+ "-5555", "kapiva@ucla.edu", "");
-	  contact2.displayContactFrame();
-
- 
-  }
 }
