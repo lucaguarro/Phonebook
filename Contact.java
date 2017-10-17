@@ -24,6 +24,20 @@ public class Contact implements Comparable<Contact>{
         this.notes = notes;
     }
     
+    public static String formatPhoneNumber(long phoneNumber)
+    {
+    	String number = "" + phoneNumber; //that swag conversion
+    	if(number.length() == 10)
+    	{
+    		return String.format("(%s) %s-%s", number.substring(0, 3), number.substring(3, 6), number.substring(6));
+    	}
+    	if(number.length() == 7)
+    	{
+    		return String.format("%s-%s", number.substring(0, 3), number.substring(3));
+    	}
+    	return number;
+    }
+    
     /**
      * Convert the contact to a string containing all sorts of information about it
      * @return String all that contact information
@@ -32,7 +46,7 @@ public class Contact implements Comparable<Contact>{
     {
     	String text = "------------------------\n";
     	text += "Name: " + name + "\n";
-    	text += "Phone Number: " + phoneNumber + "\n";
+    	text += "Phone Number: " + formatPhoneNumber(phoneNumber) + "\n";
     	text += "Email: " + email + "\n";
     	if (!notes.equals(""))
     	{

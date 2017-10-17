@@ -249,7 +249,7 @@ public class PhoneBook
     		}
     		else
     		{
-    			history += DIVIDER + "Number: " + call.getNumber() + "\n";
+    			history += DIVIDER + "Number: " + Contact.formatPhoneNumber(call.getNumber()) + "\n";
     		}
     		history += call.callInfoToString();
     	}
