@@ -164,7 +164,6 @@ public class Main {
 			}
 			else if(input.equals("4")) {
 				endProgram = specificFavToShow();
-				System.out.println(myPhonebook.favoritesToString());
 			}
 			else if(input.equals("<")) {
 				return false;
