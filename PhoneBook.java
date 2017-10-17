@@ -9,7 +9,7 @@ public class PhoneBook
 
     HashMap<Integer, Contact> contacts;
     ArrayList<Call> callHistory;
-    private int[] favorites;
+    private long[] favorites;
     
     static final String DIVIDER = "--------------------\n";
     
@@ -17,17 +17,17 @@ public class PhoneBook
     {
         this.contacts = new HashMap<Integer, Contact>();
         this.callHistory = new ArrayList<Call>();
-        this.favorites = new int[5];
+        this.favorites = new long[5];
     }
     
     /**
      * Get a contact object by its number
-     * @param number Integer representing a contact's phone number
+     * @param favorites2 Integer representing a contact's phone number
      * @return Contact The contact object
      */
-    public Contact getContact(int number)
+    public Contact getContact(long favorites2)
     {
-    	return contacts.get(number);
+    	return contacts.get(favorites2);
     }
     
     /**
@@ -51,7 +51,7 @@ public class PhoneBook
      * Delete a contact from the phonebook
      * @param number - Phonenumber of contact to remove
      */
-    public void deleteContact(int number)
+    public void deleteContact(long number)
     {
     	contacts.remove(number);
     }
@@ -80,7 +80,7 @@ public class PhoneBook
      * @param number - int phone number of contact
      * @return True if it is, false if it isnt
      */
-    public boolean isContact(int number)
+    public boolean isContact(long number)
     {
     	return getContact(number) != null;
     }
@@ -102,7 +102,7 @@ public class PhoneBook
      */
     public void swapFavorite(int pos1, int pos2)
     {
-    	int number1 = favorites[pos1 - 1];
+    	long number1 = favorites[pos1 - 1];
     	favorites[pos1 - 1] = favorites[pos2 - 1];
     	favorites[pos2 - 1] = number1;
     }
@@ -123,7 +123,7 @@ public class PhoneBook
     {
     	String toString = "";
     	int index = 1;
-    	for(int number : favorites)
+    	for(long number : favorites)
     	{
     		if (number > 0)
     			toString += index + ". " + getContact(number).getName() + "\n";
@@ -133,14 +133,14 @@ public class PhoneBook
     
     /**
      * Determines whether there is a favorite contact at a given slot
-     * @param priority - integer 1-5 representing slot in favorites
+     * @param justDigits - integer 1-5 representing slot in favorites
      * @return boolean - True if a favorite exists at this location, false otherwise
      */
-    public boolean isFavorite(int priority)
+    public boolean isFavorite(int justDigits)
     {
-    	if(favorites[priority] > 0)
+    	if(favorites[justDigits] > 0)
     	{
-    		return getContact(favorites[priority]) != null;
+    		return getContact(favorites[justDigits]) != null;
     	}
     	return false;
     }
@@ -187,14 +187,14 @@ public class PhoneBook
     
     /**
      * Adds a call to callHistory, unless there already was a recent call, then it adds to to that call's info
-     * @param number Phone number in integer form
+     * @param justDigits Phone number in integer form
      * @param outgoing Boolean whether or not its outgoing
      */
-    public void doCall(int number, boolean outgoing)
+    public void doCall(long justDigits, boolean outgoing)
     {
     	for (Call call : callHistory)
     	{
-    		if(call.getNumber() == number)
+    		if(call.getNumber() == justDigits)
     		{
     			//TODO: check if date is within 24 hours
     			call.addHistory(outgoing);
@@ -202,7 +202,7 @@ public class PhoneBook
     		}
     	}
     	//Only executes if there isn't already a logged call
-    	Call newCall = new Call(number, outgoing);
+    	Call newCall = new Call(justDigits, outgoing);
     	callHistory.add(newCall);
     }
     

@@ -45,7 +45,7 @@ public class Main {
 
 	private static boolean doCall(boolean outgoing) {
 		String input = "";
-		int justDigits = -1;
+		long justDigits = -1;
 		if(outgoing) {
 			System.out.println("Enter the 10-digit phonenumber, name, or preset favorite "
 					+ "of the contact you would like to call");		
@@ -56,13 +56,15 @@ public class Main {
 		System.out.println("Type \"<\" to go back to main menu");
 
 		do {
+			
 			input = reader.next();
 			if(!input.replaceAll("\\D", "").equals("")) {
-				justDigits = Integer.parseInt(input.replaceAll("\\D", ""));
+				String phoneNumber = input.replaceAll("[^0-9]", "");
+				justDigits = Long.parseLong(phoneNumber);
 			}
 			if(justDigits >= 5 && justDigits < 0) {
-				if(myPhonebook.isFavorite(justDigits)) {
-					myPhonebook.doCall(myPhonebook.getFavorite(justDigits), outgoing);
+				if(myPhonebook.isFavorite((int) justDigits)) {
+					myPhonebook.doCall(myPhonebook.getFavorite((int) justDigits), outgoing);
 				}
 			}
 			else if(input.replaceAll("\\D", "").length() == 10) {

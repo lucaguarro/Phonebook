@@ -2,13 +2,14 @@ import java.util.ArrayList;
 public class Call 
 {
 
-	private int number;
-	private ArrayList<CallInfo> callInfos;
+	private long number;
+	private ArrayList<CallInfo> callInfos = new ArrayList<CallInfo>();
 	
-	public Call(int number, boolean outgoing)
+	public Call(long justDigits, boolean outgoing)
 	{
-		this.number = number;
-		callInfos.add(new CallInfo(outgoing));
+		this.number = justDigits;
+		CallInfo ci = new CallInfo(outgoing);
+		callInfos.add(ci);
 	}
 	
 	/**
@@ -38,14 +39,14 @@ public class Call
 	/**
 	 * @return number - The number who made this call/this call was made to
 	 */
-	public int getNumber() {
+	public long getNumber() {
 		return number;
 	}
 
 	/**
 	 * @param number - The number who made this call/this call was made to to set
 	 */
-	public void setNumber(int number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}	
 	
