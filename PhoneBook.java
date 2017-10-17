@@ -91,6 +91,18 @@ public class PhoneBook
     }
     
     /**
+     * Changes a contact's phone number
+     * @param contact - The contact we are editing
+     * @param newNumber - The new number for the contact
+     */
+    public void changePhoneNumber(Contact contact, long newNumber)
+    {
+    	deleteContact(contact.getPhoneNumber());
+    	contact.setPhoneNumber(newNumber);
+    	addContact(contact);
+    }
+    
+    /**
      * Delete a contact from the phonebook
      * @param name - Name of contact to remove
      */
