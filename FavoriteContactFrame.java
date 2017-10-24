@@ -78,7 +78,7 @@ public class FavoriteContactFrame extends JPanel{
 		  Dimension resizedImg = getScaledDimension(originalImg, window);
 		  
 		  Graphics2D g2d = (Graphics2D)g.create();
-		  g2d.rotate(Math.toRadians(90), resizedImg.width/2 , resizedImg.height/2); //rotate 90 deg, clockwise about the center of the image
+		  g2d.rotate(Math.toRadians(0), resizedImg.width/2 , resizedImg.height/2); //rotate 90 deg, clockwise about the center of the image
 		  // Draw our Image object.
 		  g2d.drawImage(image,10,10,resizedImg.width, resizedImg.height, this); // at location 10,10, with scaled width and height
 		  g2d.dispose();

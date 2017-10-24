@@ -10,9 +10,9 @@ public class Main {
 	
 	public static void main(String[] args) {
 		myPhonebook.addContact(new Contact("Josh", 6617066161l, "josh@gmail.com", "Cool guy"));
-		myPhonebook.addFavorite(6617066161l, 1, "C:\\Users\\Josh\\Desktop\\contact.jpg");
+		myPhonebook.addFavorite(6617066161l, 1, "/Users/LucaGuarro/Documents/joshpeck.jpg");
 		myPhonebook.addContact(new Contact("Luca", 6615556161l, "luca@gmail.com", "QA Master"));
-		myPhonebook.addFavorite(6615556161l, 2, "C:\\Users\\Josh\\Desktop\\contact.jpg");
+		myPhonebook.addFavorite(6615556161l, 2, "/Users/LucaGuarro/Documents/joshpeck.jpg\"");
 		myPhonebook.addContact(new Contact("Gene", 5555555555l, "gene@gmail.com", "Deadpool is cool"));
 		showMainMenu();
 		reader.close();
@@ -108,7 +108,7 @@ public class Main {
 		boolean endProgram = false;
 		String input = "";
 		//System.out.println("Please choose an option");
-		String[] options = new String[]{"1: Get Call History","2: Edit Phonebook","3: Edit Favorites", "<: Go Back"};
+		String[] options = new String[]{"1: Get Call History","2: View Phonebook","3: View Favorites", "<: Go Back"};
 		//System.out.println(Arrays.toString(options));
 		
 		boolean inputValid;
@@ -363,6 +363,10 @@ public class Main {
 				case 1:
 					if(myPhonebook.isContact(input)) {
 						c = myPhonebook.getContact(input);
+						System.out.println("Please enter the image path");
+						String imagePath;
+						imagePath = reader.next();
+						c.setImagePath(imagePath);
 					} else {
 						System.out.println("That is not a contact in your phonebook");
 						i--;
@@ -434,7 +438,7 @@ public class Main {
 			else if(myPhonebook.isContact(input)) {
 				String name = input;
 				myPhonebook.displayContact(name);
-				System.out.println("Do you want to call this contact. Enter y or n.");
+				System.out.println("Do you want to call this contact? Enter y or n.");
 				input = reader.next();
 				if(input.equals("y")) {
 					myPhonebook.doCall(myPhonebook.getContact(name), true);
@@ -537,7 +541,7 @@ public class Main {
 			}
 			else if(input.equals("4")) {
 				System.out.println("Please enter the new notes:");
-				input = reader.nextLine();	//Show contacts here
+				input = reader.next();	//Show contacts here
 				contact.setNotes(input);
 			} 
 			else if(input.equals("<")) {
@@ -552,7 +556,7 @@ public class Main {
 		String[] contactPrompts = new String[]{"Please type in the name of the contact you would like to add"
 				,"Please enter the number", "Please enter the email", "Please enter any notes"};
 		String input;
-		String name = "", email = "", notes = "";
+		String name = "", email = "", notes = "", imagepath = "";
 		long number = 0;
 		int i = 0;
 		for(String contactPrompt : contactPrompts) {
@@ -586,6 +590,7 @@ public class Main {
 				case 3:
 					notes = input;
 					break;
+					
 			}
 			
 			i++;
